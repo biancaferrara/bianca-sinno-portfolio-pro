@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Linkedin, Mail, Phone } from "lucide-react";
 
 interface HeroSectionProps {
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'it';
   darkMode: boolean;
 }
 
@@ -33,6 +33,19 @@ export const HeroSection = ({ language, darkMode }: HeroSectionProps) => {
       status: "Single",
       whatsapp: "WhatsApp",
       email: "Email",
+      linkedin: "LinkedIn"
+    },
+    it: {
+      greeting: "Ciao, sono",
+      name: "Bianca Ferrara Sinno",
+      title: "Coordinatrice Amministrativo-Finanziaria",
+      description: "Professionista esperta nell'area amministrativa e finanziaria con esperienza internazionale in Italia e Svizzera. Specializzata nella gestione dei processi, controllo finanziario e relazioni con i clienti.",
+      location: "Vila Sofia, São Paulo, SP",
+      age: "29 anni",
+      nationality: "Brasiliana e Italiana",
+      status: "Nubile",
+      whatsapp: "WhatsApp",
+      email: "E-mail",
       linkedin: "LinkedIn"
     }
   };

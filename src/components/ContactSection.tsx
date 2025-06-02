@@ -9,7 +9,7 @@ import { Phone, Mail, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface ContactSectionProps {
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'it';
   darkMode: boolean;
 }
 
@@ -59,6 +59,25 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
       },
       success: "Message sent successfully!",
       successDesc: "I'll get back to you soon."
+    },
+    it: {
+      title: "Mettiti in Contatto",
+      subtitle: "Parliamo di opportunità",
+      form: {
+        name: "Nome",
+        email: "Email",
+        message: "Messaggio",
+        send: "Invia Messaggio"
+      },
+      contact: {
+        whatsapp: "WhatsApp",
+        email: "Email",
+        linkedin: "LinkedIn",
+        location: "Posizione",
+        address: "Vila Sofia, São Paulo, SP"
+      },
+      success: "Messaggio inviato con successo!",
+      successDesc: "Ti ricontatterò presto."
     }
   };
 

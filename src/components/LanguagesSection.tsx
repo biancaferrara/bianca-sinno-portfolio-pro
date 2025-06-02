@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface LanguagesSectionProps {
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'it';
   darkMode: boolean;
 }
 
@@ -64,6 +64,36 @@ export const LanguagesSection = ({ language, darkMode }: LanguagesSectionProps) 
         {
           language: "French",
           level: "Intermediate",
+          code: "B1"
+        }
+      ]
+    },
+    it: {
+      title: "Lingue",
+      languages: [
+        {
+          language: "Portoghese",
+          level: "Madrelingua",
+          code: "C2"
+        },
+        {
+          language: "Italiano",
+          level: "Fluente",
+          code: "C2"
+        },
+        {
+          language: "Inglese",
+          level: "Avanzato",
+          code: "B2"
+        },
+        {
+          language: "Spagnolo",
+          level: "Intermedio",
+          code: "B1"
+        },
+        {
+          language: "Francese",
+          level: "Intermedio",
           code: "B1"
         }
       ]

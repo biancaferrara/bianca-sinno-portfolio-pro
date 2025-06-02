@@ -12,12 +12,18 @@ import { EducationSection } from "@/components/EducationSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { LanguagesSection } from "@/components/LanguagesSection";
 import { ContactSection } from "@/components/ContactSection";
-import { Moon, Sun, Download } from "lucide-react";
+import { Moon, Sun, Download, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Index = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState<'pt' | 'en'>('pt');
+  const [language, setLanguage] = useState<'pt' | 'en' | 'it'>('pt');
   const { toast } = useToast();
 
   useEffect(() => {
@@ -52,15 +58,40 @@ const Index = () => {
       skills: "Skills",
       languages: "Languages",
       contact: "Contact"
+    },
+    it: {
+      title: "Bianca Ferrara Sinno | Portfolio Amministrativo-Finanziario",
+      downloadCV: "Scarica CV",
+      about: "Chi Sono",
+      experience: "Esperienza",
+      education: "Formazione",
+      skills: "Competenze",
+      languages: "Lingue",
+      contact: "Contatto"
     }
   };
 
   const t = translations[language];
 
   const handleDownloadCV = () => {
+    const messages = {
+      pt: {
+        title: "Download iniciado",
+        description: "O currículo será baixado em breve."
+      },
+      en: {
+        title: "Download started",
+        description: "The CV will be downloaded shortly."
+      },
+      it: {
+        title: "Download avviato",
+        description: "Il CV verrà scaricato a breve."
+      }
+    };
+
     toast({
-      title: "Download iniciado",
-      description: "O currículo será baixado em breve.",
+      title: messages[language].title,
+      description: messages[language].description,
     });
     // Download do arquivo PDF localizado em public/assets/
     const link = document.createElement('a');
@@ -69,18 +100,35 @@ const Index = () => {
     link.click();
   };
 
+  const languageLabels = {
+    pt: 'PT',
+    en: 'EN',
+    it: 'IT'
+  };
+
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gradient-to-br from-purple-900 via-pink-900 to-purple-800' : 'bg-gradient-to-br from-pink-50 via-purple-50 to-white'}`}>
-      {/* Theme Toggle */}
+      {/* Theme Toggle and Language Selector */}
       <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
-          className="text-xs"
-        >
-          {language === 'pt' ? 'EN' : 'PT'}
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm" className="text-xs">
+              <Globe className="w-3 h-3 mr-1" />
+              {languageLabels[language]}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={() => setLanguage('pt')}>
+              🇧🇷 Português
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setLanguage('en')}>
+              🇺🇸 English
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setLanguage('it')}>
+              🇮🇹 Italiano
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <Button
           variant="outline"
           size="icon"

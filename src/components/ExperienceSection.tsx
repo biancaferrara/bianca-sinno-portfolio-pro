@@ -1,8 +1,7 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ExperienceSectionProps {
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'it';
   darkMode: boolean;
 }
 
@@ -134,6 +133,71 @@ export const ExperienceSection = ({ language, darkMode }: ExperienceSectionProps
             "Development of commercial strategies and digital marketing for sales expansion",
             "Team supervision, recruitment, training and performance monitoring",
             "Implementation of measures for cost optimization and unit profitability"
+          ]
+        }
+      ]
+    },
+    it: {
+      title: "Esperienza Professionale",
+      experiences: [
+        {
+          company: "Plant Choice Alimentos Vegetais Ltda.",
+          location: "São Paulo",
+          position: "Coordinatrice Amministrativo-Finanziaria",
+          period: "08/2024 – Attuale",
+          responsibilities: [
+            "Gestione strategica delle operazioni amministrative e finanziarie, garantendo efficienza e conformità normativa",
+            "Controllo del flusso di cassa, riconciliazione bancaria e monitoraggio dei crediti e debiti",
+            "Sviluppo e analisi di budget, pianificazione finanziaria e ottimizzazione dei costi aziendali",
+            "Relazioni con clienti e fornitori, negoziazione di condizioni commerciali e supervisione contratti",
+            "Gestione del dipartimento risorse umane, inclusi reclutamento, dimissioni, benefici e controllo buste paga"
+          ]
+        },
+        {
+          company: "VIVA Nutrição Ltda.",
+          location: "São Paulo",
+          position: "Analista Amministrativo-Finanziaria",
+          period: "04/2023 – 08/2024",
+          responsibilities: [
+            "Amministrazione finanziaria, controllo del flusso di cassa e riconciliazioni bancarie",
+            "Supervisione dei conti da pagare e da incassare, garantendo precisione nei registri contabili",
+            "Relazione diretta con clienti per allineamento commerciale e operativo",
+            "Controllo delle buste paga e tassazioni, assicurando il rispetto degli obblighi legali"
+          ]
+        },
+        {
+          company: "SGLOBAL Assessoria",
+          location: "São Paulo",
+          position: "Coordinatrice Amministrativa",
+          period: "08/2022 – 03/2023",
+          responsibilities: [
+            "Strutturazione e implementazione di processi amministrativi, garantendo maggiore efficienza operativa",
+            "Gestione di contratti e budget, analizzando fattibilità finanziaria e normativa",
+            "Controllo e organizzazione della documentazione aziendale, garantendo conformità tecnica e legale"
+          ]
+        },
+        {
+          company: "SGLOBAL Assessoria",
+          location: "São Paulo",
+          position: "Assistente Finanziaria",
+          period: "12/2021 – 08/2022",
+          responsibilities: [
+            "Emissione fatturazione, controllo pagamenti e analisi del flusso finanziario",
+            "Riconciliazione bancaria e supervisione dei crediti dell'azienda",
+            "Supporto amministrativo nell'organizzazione documentale e normativa del settore finanziario"
+          ]
+        },
+        {
+          company: "Bob's (Bilu Comércio de Alimentos Eireli)",
+          location: "São Paulo",
+          position: "Manager Amministrativa",
+          period: "05/2019 – 07/2022",
+          responsibilities: [
+            "Gestione operativa, controllo qualità e amministrazione inventario e acquisti",
+            "Pianificazione finanziaria, riconciliazione carte e relazioni con istituti bancari",
+            "Sviluppo di strategie commerciali e marketing digitale per espansione vendite",
+            "Supervisione team, reclutamento, formazione e monitoraggio performance",
+            "Implementazione di misure per ottimizzazione costi e redditività dell'unità"
           ]
         }
       ]

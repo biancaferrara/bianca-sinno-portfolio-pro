@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface SkillsSectionProps {
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'it';
   darkMode: boolean;
 }
 
@@ -46,6 +46,27 @@ export const SkillsSection = ({ language, darkMode }: SkillsSectionProps) => {
         },
         {
           category: "Operating Systems",
+          items: ["Windows", "Mac OS"]
+        }
+      ]
+    },
+    it: {
+      title: "Competenze Tecniche",
+      skills: [
+        {
+          category: "Sistemi ERP/CRM",
+          items: ["Omie (ERP)", "Mercos (CRM)"]
+        },
+        {
+          category: "Suite Office",
+          items: ["Word - Avanzato", "Excel - Avanzato", "PowerPoint - Avanzato", "Outlook - Avanzato"]
+        },
+        {
+          category: "Programmazione",
+          items: ["HTML - Base", "CSS - Base", "XML - Base"]
+        },
+        {
+          category: "Sistemi Operativi",
           items: ["Windows", "Mac OS"]
         }
       ]

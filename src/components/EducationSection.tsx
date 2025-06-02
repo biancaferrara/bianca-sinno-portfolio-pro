@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface EducationSectionProps {
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'it';
   darkMode: boolean;
 }
 
@@ -51,6 +51,29 @@ export const EducationSection = ({ language, darkMode }: EducationSectionProps) 
           degree: "Scientific High School Diploma",
           institution: "Scuola Italiana Eugenio Montale",
           location: "São Paulo, Brazil"
+        }
+      ]
+    },
+    it: {
+      title: "Formazione Accademica",
+      education: [
+        {
+          year: "2019",
+          degree: "Laurea in Scienze della Comunicazione",
+          institution: "Università della Svizzera Italiana",
+          location: "Lugano, Svizzera"
+        },
+        {
+          year: "2018",
+          degree: "Specializzazione in Comunicazione Aziendale",
+          institution: "USI",
+          location: "Lugano, Svizzera"
+        },
+        {
+          year: "2013",
+          degree: "Diploma di Liceo Scientifico",
+          institution: "Scuola Italiana Eugenio Montale",
+          location: "São Paulo, Brasile"
         }
       ]
     }

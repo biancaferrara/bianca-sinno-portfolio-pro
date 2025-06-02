@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
 interface NavigationProps {
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'it';
   darkMode: boolean;
 }
 
@@ -28,6 +28,14 @@ export const Navigation = ({ language, darkMode }: NavigationProps) => {
       skills: "Skills",
       languages: "Languages",
       contact: "Contact"
+    },
+    it: {
+      about: "Chi Sono",
+      experience: "Esperienza",
+      education: "Formazione",
+      skills: "Competenze",
+      languages: "Lingue",
+      contact: "Contatto"
     }
   };
 
