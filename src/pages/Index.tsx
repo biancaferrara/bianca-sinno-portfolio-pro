@@ -62,7 +62,7 @@ const Index = () => {
       title: "Download iniciado",
       description: "O currículo será baixado em breve.",
     });
-    // In a real implementation, this would download the actual PDF
+    // Download do arquivo PDF localizado em public/assets/
     const link = document.createElement('a');
     link.href = '/assets/curriculo-bianca.pdf';
     link.download = 'curriculo-bianca-sinno.pdf';

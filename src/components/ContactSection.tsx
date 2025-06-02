@@ -161,10 +161,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
                   className="w-full bg-green-600 hover:bg-green-700 text-white flex items-center gap-3"
                 >
                   <Phone className="w-5 h-5" />
-                  <div className="text-left">
-                    <div className="font-medium">{t.contact.whatsapp}</div>
-                    <div className="text-sm opacity-90">+55 11 96920-1082</div>
-                  </div>
+                  <span className="font-medium">{t.contact.whatsapp}</span>
                 </Button>
                 
                 <Button
@@ -173,10 +170,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
                   className="w-full flex items-center gap-3"
                 >
                   <Mail className="w-5 h-5" />
-                  <div className="text-left">
-                    <div className="font-medium">{t.contact.email}</div>
-                    <div className="text-sm opacity-70">sinnobianca@gmail.com</div>
-                  </div>
+                  <span className="font-medium">{t.contact.email}</span>
                 </Button>
                 
                 <Button
@@ -184,10 +178,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-3"
                 >
                   <Linkedin className="w-5 h-5" />
-                  <div className="text-left">
-                    <div className="font-medium">{t.contact.linkedin}</div>
-                    <div className="text-sm opacity-90">bianca-ferrara-sinno</div>
-                  </div>
+                  <span className="font-medium">{t.contact.linkedin}</span>
                 </Button>
               </div>
             </CardContent>
