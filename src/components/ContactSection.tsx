@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, Linkedin } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { useEmailJS } from "@/hooks/useEmailJS";
 
 interface ContactSectionProps {
   language: 'pt' | 'en' | 'it';
@@ -19,7 +19,8 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
     email: '',
     message: ''
   });
-  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const { sendEmail } = useEmailJS(language);
 
   const translations = {
     pt: {
@@ -37,9 +38,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
         linkedin: "LinkedIn",
         location: "Localização",
         address: "Vila Sofia, São Paulo, SP"
-      },
-      success: "Mensagem enviada com sucesso!",
-      successDesc: "Retornarei o contato em breve."
+      }
     },
     en: {
       title: "Get in Touch",
@@ -56,9 +55,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
         linkedin: "LinkedIn",
         location: "Location",
         address: "Vila Sofia, São Paulo, SP"
-      },
-      success: "Message sent successfully!",
-      successDesc: "I'll get back to you soon."
+      }
     },
     it: {
       title: "Mettiti in Contatto",
@@ -75,22 +72,27 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
         linkedin: "LinkedIn",
         location: "Posizione",
         address: "Vila Sofia, São Paulo, SP"
-      },
-      success: "Messaggio inviato con successo!",
-      successDesc: "Ti ricontatterò presto."
+      }
     }
   };
 
   const t = translations[language];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, this would send the email
-    toast({
-      title: t.success,
-      description: t.successDesc,
+    setIsLoading(true);
+
+    const success = await sendEmail({
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message
     });
-    setFormData({ name: '', email: '', message: '' });
+
+    if (success) {
+      setFormData({ name: '', email: '', message: '' });
+    }
+
+    setIsLoading(false);
   };
 
   const handleWhatsApp = () => {
@@ -132,6 +134,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     required
+                    disabled={isLoading}
                     className={darkMode ? 'bg-black/20 border-white/20' : ''}
                   />
                 </div>
@@ -143,6 +146,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required
+                    disabled={isLoading}
                     className={darkMode ? 'bg-black/20 border-white/20' : ''}
                   />
                 </div>
@@ -154,11 +158,16 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     required
                     rows={4}
+                    disabled={isLoading}
                     className={darkMode ? 'bg-black/20 border-white/20' : ''}
                   />
                 </div>
-                <Button type="submit" className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white">
-                  {t.form.send}
+                <Button 
+                  type="submit" 
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white"
+                >
+                  {isLoading ? 'Enviando...' : t.form.send}
                 </Button>
               </form>
             </CardContent>
