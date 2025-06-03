@@ -79,11 +79,15 @@ export const Navigation = ({ language, darkMode }: NavigationProps) => {
         ))}
       </div>
 
-      {/* Mobile Navigation */}
-      <div className="md:hidden">
+      {/* Mobile Navigation - positioned below download button */}
+      <div className="md:hidden fixed top-20 right-4 z-30">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon">
+            <Button variant="outline" size="icon" className={`backdrop-blur-md border ${
+              darkMode 
+                ? 'bg-black/20 border-white/20 text-white hover:bg-white/10' 
+                : 'bg-white/80 border-gray-200 text-gray-800 hover:bg-gray-50'
+            }`}>
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
