@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, Linkedin } from "lucide-react";
-import { useEmailJS } from "@/hooks/useEmailJS";
+import { Phone, Mail, Linkedin, MapPin } from "lucide-react";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 
 interface ContactSectionProps {
   language: 'pt' | 'en' | 'it';
@@ -20,7 +20,7 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
     message: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const { sendEmail } = useEmailJS(language);
+  const { sendEmail } = useFormSubmit(language);
 
   const translations = {
     pt: {
@@ -107,6 +107,10 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
     window.open('https://www.linkedin.com/in/bianca-ferrara-sinno-7a5a2426a/', '_blank');
   };
 
+  const handleLocationClick = () => {
+    window.open('https://www.google.com/maps/place/Vila+Sofia,+S%C3%A3o+Paulo+-+SP/@-23.6585106,-46.6933015,16.5z/data=!4m6!3m5!1s0x94ce5041f6eb3d83:0x7b21c6e49b107be4!8m2!3d-23.659547!4d-46.6910592!16s%2Fg%2F120_97fz?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D', '_blank');
+  };
+
   return (
     <section id="contact" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -180,7 +184,14 @@ export const ContactSection = ({ language, darkMode }: ContactSectionProps) => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <p className="text-lg font-medium mb-2">📍 {t.contact.address}</p>
+                <Button
+                  onClick={handleLocationClick}
+                  variant="ghost"
+                  className="text-lg font-medium mb-2 p-0 h-auto hover:bg-transparent hover:text-pink-600 transition-colors"
+                >
+                  <MapPin className="w-5 h-5 mr-2" />
+                  {t.contact.address}
+                </Button>
               </div>
               
               <div className="space-y-4">

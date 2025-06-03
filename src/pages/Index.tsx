@@ -1,10 +1,6 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
@@ -12,8 +8,8 @@ import { EducationSection } from "@/components/EducationSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { LanguagesSection } from "@/components/LanguagesSection";
 import { ContactSection } from "@/components/ContactSection";
-import { Moon, Sun, Download, Globe } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { CVDownloadButton } from "@/components/CVDownloadButton";
+import { Moon, Sun, Globe } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +20,6 @@ import {
 const Index = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState<'pt' | 'en' | 'it'>('pt');
-  const { toast } = useToast();
 
   useEffect(() => {
     if (darkMode) {
@@ -36,68 +31,6 @@ const Index = () => {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-  };
-
-  const translations = {
-    pt: {
-      title: "Bianca Ferrara Sinno | Portfólio Administrativo-Financeiro",
-      downloadCV: "Download Currículo",
-      about: "Sobre",
-      experience: "Experiência",
-      education: "Formação",
-      skills: "Habilidades",
-      languages: "Idiomas",
-      contact: "Contato"
-    },
-    en: {
-      title: "Bianca Ferrara Sinno | Administrative-Financial Portfolio",
-      downloadCV: "Download CV",
-      about: "About",
-      experience: "Experience",
-      education: "Education",
-      skills: "Skills",
-      languages: "Languages",
-      contact: "Contact"
-    },
-    it: {
-      title: "Bianca Ferrara Sinno | Portfolio Amministrativo-Finanziario",
-      downloadCV: "Scarica CV",
-      about: "Chi Sono",
-      experience: "Esperienza",
-      education: "Formazione",
-      skills: "Competenze",
-      languages: "Lingue",
-      contact: "Contatto"
-    }
-  };
-
-  const t = translations[language];
-
-  const handleDownloadCV = () => {
-    const messages = {
-      pt: {
-        title: "Download iniciado",
-        description: "O currículo será baixado em breve."
-      },
-      en: {
-        title: "Download started",
-        description: "The CV will be downloaded shortly."
-      },
-      it: {
-        title: "Download avviato",
-        description: "Il CV verrà scaricato a breve."
-      }
-    };
-
-    toast({
-      title: messages[language].title,
-      description: messages[language].description,
-    });
-    // Download do arquivo PDF localizado em public/assets/
-    const link = document.createElement('a');
-    link.href = '/assets/curriculo-bianca.pdf';
-    link.download = 'curriculo-bianca-sinno.pdf';
-    link.click();
   };
 
   const languageLabels = {
@@ -141,13 +74,7 @@ const Index = () => {
 
       {/* Download CV Button */}
       <div className="fixed top-4 left-4 z-50">
-        <Button
-          onClick={handleDownloadCV}
-          className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white"
-        >
-          <Download className="w-4 h-4 mr-2" />
-          {t.downloadCV}
-        </Button>
+        <CVDownloadButton language={language} />
       </div>
 
       <Navigation language={language} darkMode={darkMode} />
